@@ -20,3 +20,12 @@ get '/logout' do
 	session.clear
 	redirect to '/'
 end
+
+post '/login' do
+	p params
+	user = User.authenticate(params["user"])
+	session[:user_id] = user.id
+	redirect to '/secret'
+end
+
+
